@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SimpRead</title>
+    <script src="marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="brand">SimpRead</div>
+            <button id="settings-toggle-btn" class="secondary-btn" type="button">Settings</button>
+        </header>
+
+        <section class="toolbar">
+            <select id="conversation-select"></select>
+            <button id="new-conversation-btn" class="secondary-btn" type="button">New</button>
+            <button id="delete-conversation-btn" class="danger-btn" type="button">Delete</button>
+            <select id="mode-selector"></select>
+        </section>
+
+        <section id="settings-panel" class="settings-panel hidden">
+            <div class="settings-grid">
+                <div class="settings-card">
+                    <h4>API</h4>
+                    <input id="api-url" type="text" placeholder="API URL">
+                    <input id="api-model" type="text" placeholder="Model">
+                    <input id="api-key" type="password" placeholder="API Key">
+                    <label class="field-label" for="temperature-input">Temperature</label>
+                    <input id="temperature-input" type="number" min="0" max="2" step="0.1">
+                    <button id="save-api-btn" class="primary-btn" type="button">Save API Settings</button>
+                </div>
+
+                <div class="settings-card">
+                    <h4>Modes</h4>
+                    <div id="mode-list" class="mode-list"></div>
+                    <div class="mode-create">
+                        <input id="new-mode-name" type="text" placeholder="Mode name">
+                        <textarea id="new-mode-prompt" placeholder="Mode system prompt"></textarea>
+                        <button id="add-mode-btn" class="primary-btn" type="button">Add Mode</button>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h4>Data</h4>
+                    <button id="export-data-btn" class="secondary-btn" type="button">Export Data</button>
+                    <button id="clear-data-btn" class="danger-btn" type="button">Clear All Local Data</button>
+                    <p class="settings-note">All conversations, modes and settings are stored locally.</p>
+                </div>
+            </div>
+            <div id="settings-status" class="settings-status"></div>
+        </section>
+
+        <main id="chat-container" class="chat-container"></main>
+
+        <footer class="input-area">
+            <textarea id="chat-input" placeholder="Type message"></textarea>
+            <div class="input-actions">
+                <button id="stop-btn" class="secondary-btn" type="button" disabled>Stop</button>
+                <button id="send-btn" class="primary-btn" type="button">Send</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="sidepanel.js"></script>
+</body>
+</html>
